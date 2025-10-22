@@ -1,0 +1,32 @@
+# Node dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Playwright test artifacts
+test-results/
+playwright-report/
+blob-report/
+trace.zip
+
+# Media outputs
+screenshots/
+videos/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs and temp files
+*.log
+tmp/
+.cache/
+dist/
+build/
+
+# IDE / OS files
+.vscode/
+.DS_Store
+Thumbs.db
