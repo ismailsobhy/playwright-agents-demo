@@ -12,19 +12,22 @@ import {
 } from '../pages';
 
 test.describe('Add a single item to cart and complete checkout (happy path)', () => {
-  test('Add a single item to cart and complete checkout (happy path)', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     const login = new LoginPage(page);
-    const inventory = new InventoryPage(page);
-    const cart = new CartPage(page);
-    const info = new CheckoutInfoPage(page);
-    const overview = new CheckoutOverviewPage(page);
-    const complete = new CheckoutCompletePage(page);
 
     // 1. Navigate to https://www.saucedemo.com
     await login.goto();
 
     // 2-4. Login
     await login.login('standard_user', 'secret_sauce');
+  });
+
+  test('Add a single item to cart and complete checkout (happy path)', async ({ page }) => {
+    const inventory = new InventoryPage(page);
+    const cart = new CartPage(page);
+    const info = new CheckoutInfoPage(page);
+    const overview = new CheckoutOverviewPage(page);
+    const complete = new CheckoutCompletePage(page);
 
     // 5. Add Backpack
     await inventory.addBackpack();
