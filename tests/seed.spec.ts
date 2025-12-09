@@ -2,6 +2,6 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Test group', () => {
   test('seed', async ({ page }) => {
-    // generate code here.
+    // The code here will be added to all test files
   });
 });
