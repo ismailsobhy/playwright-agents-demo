@@ -22,20 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - id: "auth"
-        name: "Authenticate to Google Cloud"
-        uses: google-github-actions/auth@v1
-        with:
-          project_id: ${{ vars.GCP_PROJECT_NAME }}
-          token_format: access_token
-          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ vars.SERVICE_ACCOUNT }}
-
-      - name: "Set up Cloud SDK"
-        uses: google-github-actions/setup-gcloud@v2
-        with:
-          version: ">= 442.0.0"
-
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
