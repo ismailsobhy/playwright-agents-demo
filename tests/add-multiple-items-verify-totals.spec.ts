@@ -12,17 +12,20 @@ import {
 } from '../pages';
 
 test.describe('Add multiple items and verify totals (2 or more items)', () => {
-  test('Add multiple items and verify totals (2 or more items)', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     const login = new LoginPage(page);
+
+    // Navigate and login
+    await login.goto();
+    await login.login('standard_user', 'secret_sauce');
+  });
+
+  test('Add multiple items and verify totals (2 or more items)', async ({ page }) => {
     const inventory = new InventoryPage(page);
     const cart = new CartPage(page);
     const info = new CheckoutInfoPage(page);
     const overview = new CheckoutOverviewPage(page);
     const complete = new CheckoutCompletePage(page);
-
-    // Navigate and login
-    await login.goto();
-    await login.login('standard_user', 'secret_sauce');
 
     // Add 3 items
     await inventory.addBackpack();
