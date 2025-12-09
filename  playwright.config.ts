@@ -3,6 +3,7 @@ import path from 'path';
 
 export default defineConfig({
   testDir: './tests',
+  testIgnore: ['seed.spec.ts'],
   reporter: [
     ['html', { outputFolder: path.resolve(__dirname, 'playwright-report') }],
   ],
