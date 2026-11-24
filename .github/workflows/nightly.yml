@@ -3,7 +3,6 @@ name: Playwright Tests
 on:
   workflow_dispatch:
   schedule:
-    # Everyday 2:00 AM EET (UTC+2)
     - cron: "0 0 * * *"
 
 permissions:
@@ -14,6 +13,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
