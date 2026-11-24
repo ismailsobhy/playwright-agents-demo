@@ -9,7 +9,7 @@
     "test": "playwright test"
   },
   "devDependencies": {
-    "@playwright/test": "latest"
+    "@playwright/test": "^1.61.0"
   },
   "keywords": [],
   "author": "",
