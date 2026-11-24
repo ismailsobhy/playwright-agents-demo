@@ -3,6 +3,7 @@ name: Playwright Tests
 on:
   workflow_dispatch:
   schedule:
+    # 00:00 UTC (02:00 EET in winter, 03:00 EEST in summer)
     - cron: "0 0 * * *"
 
 permissions:
