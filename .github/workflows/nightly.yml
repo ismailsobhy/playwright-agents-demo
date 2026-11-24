@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    # Every day at 00:00 UTC
+    # Everyday 2:00 AM EET (UTC+2)
     - cron: "0 0 * * *"
 
 permissions:
