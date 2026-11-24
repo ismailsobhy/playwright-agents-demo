@@ -3,6 +3,7 @@ name: Playwright Tests
 on:
   pull_request:
     branches: [main]
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
@@ -11,6 +12,7 @@ permissions:
 
 jobs:
   test:
+    name: Playwright PR Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
