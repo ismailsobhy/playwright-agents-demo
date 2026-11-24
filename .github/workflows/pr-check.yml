@@ -25,7 +25,7 @@ jobs:
         run: npm ci && npx playwright install --with-deps chromium
 
       - name: Run PR tagged tests
-        run: npx playwright test --grep "@pr"
+        run: npx playwright test --grep "@pr" --reporter=html
 
       - name: Upload report
         if: always()
