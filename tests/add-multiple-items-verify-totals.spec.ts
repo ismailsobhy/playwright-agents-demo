@@ -20,7 +20,7 @@ test.describe(
 
       // Navigate and login
       await login.goto();
-      await login.login("standard_user1", "secret_sauce");
+      await login.login("standard_user", "secret_sauce");
     });
 
     test("Add multiple items and verify totals (2 or more items)", async ({
