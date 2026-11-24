@@ -29,8 +29,7 @@ jobs:
 
       - name: Run PR tagged tests
         env:
-          BASE_URL: ${{ vars.PREPROD_URL }}
-        run: npx playwright test --grep "@pr"
+        run: npx playwright test
 
       - name: Upload report
         if: always()
