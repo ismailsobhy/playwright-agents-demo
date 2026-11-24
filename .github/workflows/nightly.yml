@@ -4,14 +4,15 @@ on:
   workflow_dispatch:
   schedule:
     # 00:00 UTC (02:00 EET in winter, 03:00 EEST in summer)
-    - cron: "17 0 * * *"
+    - cron: "0 0 * * *"
 
 permissions:
   contents: read
+  actions: read
+  id-token: write
 
 jobs:
   test:
-    name: Playwright Nightly Tests
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -20,19 +21,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: npm
 
       - name: Install dependencies and Playwright browser
         run: npm ci && npx playwright install --with-deps chromium
 
       - name: Run tests
-        run: npx playwright test --reporter=list,html
+        run: npx playwright test --reporter=html
 
       - name: Upload report
-        if: ${{ !cancelled() }}
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: playwright-report/
-          if-no-files-found: ignore
-          retention-days: 14
