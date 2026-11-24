@@ -1,8 +1,9 @@
-name: Playwright Tests
+name: Playwright Run Check
 
 on:
   pull_request:
     branches: [main]
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
@@ -11,6 +12,7 @@ permissions:
 
 jobs:
   test:
+    name: Playwright PR Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,7 +25,7 @@ jobs:
         run: npm ci && npx playwright install --with-deps chromium
 
       - name: Run PR tagged tests
-        run: npx playwright test
+        run: npx playwright test --grep "@pr" --reporter=html
 
       - name: Upload report
         if: always()
